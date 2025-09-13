@@ -2051,7 +2051,7 @@ PyObject * skillGetIconImageNew(PyObject * poSelf, PyObject * poArgs)
 
 	CPythonSkill::SSkillData * c_pSkillData;
 	if (!CPythonSkill::Instance().GetSkillData(iSkillIndex, &c_pSkillData))
-		return Py_BuildValue("i", 0);	// 익셉션을 내는 대신 0을 리턴한다.
+		return Py_BuildValue("K", 0);	// 익셉션을 내는 대신 0을 리턴한다.
 
 	if (iGradeIndex < 0)
 		iGradeIndex = 0;
