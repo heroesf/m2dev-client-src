@@ -11,8 +11,8 @@ enum
 	HEADER_CG_LOGIN								= 1,
 	HEADER_CG_ATTACK							= 2,
 	HEADER_CG_CHAT								= 3,
-	HEADER_CG_PLAYER_CREATE						= 4,		// 새로운 플래이어를 생성
-	HEADER_CG_PLAYER_DESTROY					= 5,		// 플래이어를 삭제.
+	HEADER_CG_PLAYER_CREATE						= 4,
+	HEADER_CG_PLAYER_DESTROY					= 5,
 	HEADER_CG_PLAYER_SELECT						= 6,
 	HEADER_CG_CHARACTER_MOVE					= 7,
 	HEADER_CG_SYNC_POSITION  					= 8,
@@ -27,57 +27,33 @@ enum
 	HEADER_CG_QUICKSLOT_SWAP                    = 18,
 	HEADER_CG_WHISPER							= 19,
 	HEADER_CG_ITEM_DROP2                        = 20,	
-	//HEADER_BLANK21								= 21,
-	//HEADER_BLANK22								= 22,
-	//HEADER_BLANK22								= 23,
-	//HEADER_BLANK24								= 24,
-	//HEADER_BLANK25								= 25,
+
 	HEADER_CG_ON_CLICK							= 26,
 	HEADER_CG_EXCHANGE							= 27,
     HEADER_CG_CHARACTER_POSITION                = 28,
     HEADER_CG_SCRIPT_ANSWER						= 29,
 	HEADER_CG_QUEST_INPUT_STRING				= 30,
     HEADER_CG_QUEST_CONFIRM                     = 31,
-	//HEADER_BLANK32								= 32,
-	//HEADER_BLANK33								= 33,
-	//HEADER_BLANK34								= 34,
-	//HEADER_BLANK35								= 35,
-	//HEADER_BLANK36								= 36,
-	//HEADER_BLANK37								= 37,
-	//HEADER_BLANK38								= 38,
-	//HEADER_BLANK39								= 39,
-	//HEADER_BLANK40								= 40,
+
 	HEADER_CG_PVP								= 41,
-	//HEADER_BLANK42								= 42,
-	//HEADER_BLANK43								= 43,
-	//HEADER_BLANK44								= 44,
-	//HEADER_BLANK45								= 45,
-	//HEADER_BLANK46								= 46,
-	//HEADER_BLANK47								= 47,
-	//HEADER_BLANK48								= 48,
-	//HEADER_BLANK49								= 49,
+
     HEADER_CG_SHOP								= 50,
 	HEADER_CG_FLY_TARGETING						= 51,
 	HEADER_CG_USE_SKILL							= 52,
     HEADER_CG_ADD_FLY_TARGETING                 = 53,
 	HEADER_CG_SHOOT								= 54,
 	HEADER_CG_MYSHOP                            = 55,    
-	//HEADER_BLANK56								= 56,
-	//HEADER_BLANK57								= 57,
-	//HEADER_BLANK58								= 58,
-	//HEADER_BLANK59								= 59,
+
 	HEADER_CG_ITEM_USE_TO_ITEM					= 60,
     HEADER_CG_TARGET                            = 61,
-	//HEADER_BLANK62								= 62,
-	//HEADER_BLANK63								= 63,
-	//HEADER_BLANK64								= 64,
+
 	HEADER_CG_WARP								= 65, 
     HEADER_CG_SCRIPT_BUTTON						= 66,
     HEADER_CG_MESSENGER                         = 67,
-	//HEADER_BLANK68								= 68,
-    HEADER_CG_MALL_CHECKOUT                     = 69,
-    HEADER_CG_SAFEBOX_CHECKIN                   = 70,   // 아이템을 창고에 넣는다.
-    HEADER_CG_SAFEBOX_CHECKOUT                  = 71,   // 아이템을 창고로 부터 빼온다.
+
+	HEADER_CG_MALL_CHECKOUT                     = 69,
+    HEADER_CG_SAFEBOX_CHECKIN                   = 70,
+    HEADER_CG_SAFEBOX_CHECKOUT                  = 71,
     HEADER_CG_PARTY_INVITE                      = 72,
     HEADER_CG_PARTY_INVITE_ANSWER               = 73,
     HEADER_CG_PARTY_REMOVE                      = 74,
@@ -85,27 +61,15 @@ enum
     HEADER_CG_PARTY_USE_SKILL                   = 76,
     HEADER_CG_SAFEBOX_ITEM_MOVE                 = 77,
 	HEADER_CG_PARTY_PARAMETER                   = 78,
-	//HEADER_BLANK68								= 79,
+
 	HEADER_CG_GUILD								= 80,
 	HEADER_CG_ANSWER_MAKE_GUILD					= 81,
     HEADER_CG_FISHING                           = 82,
     HEADER_CG_GIVE_ITEM                         = 83,
-	//HEADER_BLANK84								= 84,
-	//HEADER_BLANK85								= 85,
-	//HEADER_BLANK86								= 86,
-	//HEADER_BLANK87								= 87,
-	//HEADER_BLANK88								= 88,
-	//HEADER_BLANK89								= 89,
+
     HEADER_CG_EMPIRE                            = 90,
-	//HEADER_BLANK91								= 91,
-	//HEADER_BLANK92								= 92,
-	//HEADER_BLANK93								= 93,
-	//HEADER_BLANK94								= 94,
-	//HEADER_BLANK95								= 95,
+
     HEADER_CG_REFINE                            = 96,
-	//HEADER_BLANK97								= 97,
-	//HEADER_BLANK98								= 98,
-	//HEADER_BLANK99								= 99,
 
 	HEADER_CG_MARK_LOGIN						= 100,
 	HEADER_CG_MARK_CRCLIST						= 101,
@@ -131,7 +95,9 @@ enum
 	HEADER_CG_DRAGON_SOUL_REFINE			= 205,
 	HEADER_CG_STATE_CHECKER					= 206,
 
-	HEADER_CG_KEY_AGREEMENT						= 0xfb, // _IMPROVED_PACKET_ENCRYPTION_
+#ifdef _IMPROVED_PACKET_ENCRYPTION_
+	HEADER_CG_KEY_AGREEMENT						= 0xfb,
+#endif
 	HEADER_CG_TIME_SYNC							= 0xfc,
 	HEADER_CG_CLIENT_VERSION					= 0xfd,
 	HEADER_CG_CLIENT_VERSION2					= 0xf1,
@@ -161,14 +127,14 @@ enum
 	HEADER_GC_CHANGE_SPEED						= 18,
 	HEADER_GC_CHARACTER_UPDATE                  = 19,
 
-	HEADER_GC_ITEM_DEL							= 20, // 아이템 창에 추가
-	HEADER_GC_ITEM_SET							= 21, // 아이템 창에 추가
-	HEADER_GC_ITEM_USE							= 22, // 아이템 사용 (주위 사람들에게 보여주기 위해)
-	HEADER_GC_ITEM_DROP							= 23, // 아이템 버리기
-	HEADER_GC_ITEM_UPDATE						= 25, // 아이템 수치 업데이트
+	HEADER_GC_ITEM_DEL							= 20, 
+	HEADER_GC_ITEM_SET							= 21, 
+	HEADER_GC_ITEM_USE							= 22, 
+	HEADER_GC_ITEM_DROP							= 23, 
+	HEADER_GC_ITEM_UPDATE						= 25, 
 
-	HEADER_GC_ITEM_GROUND_ADD					= 26, // 바닥에 아이템 추가
-	HEADER_GC_ITEM_GROUND_DEL					= 27, // 바닥에서 아이템 삭제
+	HEADER_GC_ITEM_GROUND_ADD					= 26, 
+	HEADER_GC_ITEM_GROUND_DEL					= 27, 
     HEADER_GC_QUICKSLOT_ADD                     = 28,
     HEADER_GC_QUICKSLOT_DEL                     = 29,
     HEADER_GC_QUICKSLOT_SWAP                    = 30,
@@ -183,7 +149,6 @@ enum
 	HEADER_GC_SHOP							    = 38,
 	HEADER_GC_SHOP_SIGN							= 39,
 
-	// 39 ~ 41 Balnk
 	HEADER_GC_DUEL_START						= 40,
 	HEADER_GC_PVP								= 41,
 	HEADER_GC_EXCHANGE							= 42,
@@ -241,7 +206,6 @@ enum
 	HEADER_GC_MARK_DIFF_DATA                    = 101,
 	HEADER_GC_MARK_IDXLIST						= 102,
 
-	//HEADER_GC_SLOW_TIMER						= 105,
     HEADER_GC_TIME                              = 106,
     HEADER_GC_CHANGE_NAME                       = 107,
 
@@ -249,11 +213,9 @@ enum
 	HEADER_GC_WALK_MODE							= 111, 
 	HEADER_GC_CHANGE_SKILL_GROUP				= 112,
 
-	// SUPPORT_BGM
 	HEADER_GC_MAIN_CHARACTER2_EMPIRE			= 113,
-	// END_OF_SUPPORT_BGM
 
-    HEADER_GC_SEPCIAL_EFFECT                    = 114,
+    HEADER_GC_SPECIAL_EFFECT                    = 114,
 	HEADER_GC_NPC_POSITION						= 115,
 
     HEADER_GC_CHINA_MATRIX_CARD                 = 116,
@@ -282,18 +244,14 @@ enum
 	HEADER_GC_DAMAGE_INFO						= 135,
 	HEADER_GC_CHAR_ADDITIONAL_INFO				= 136,
 
-	// SUPPORT_BGM
 	HEADER_GC_MAIN_CHARACTER3_BGM				= 137,
 	HEADER_GC_MAIN_CHARACTER4_BGM_VOL			= 138,
-	// END_OF_SUPPORT_BGM
 
     HEADER_GC_AUTH_SUCCESS                      = 150,
     HEADER_GC_PANAMA_PACK						= 151,
 
-	//HYBRID CRYPT
 	HEADER_GC_HYBRIDCRYPT_KEYS					= 152,
-	HEADER_GC_HYBRIDCRYPT_SDB					= 153, // SDB means Supplmentary Data Blocks
-	//HYBRID CRYPT
+	HEADER_GC_HYBRIDCRYPT_SDB					= 153,
 
 	HEADER_GC_RUNUP_MATRIX_QUIZ                 = 201,
 
@@ -301,8 +259,11 @@ enum
 	HEADER_GC_DRAGON_SOUL_REFINE						= 209,
 	HEADER_GC_RESPOND_CHANNELSTATUS				= 210,
 
-	HEADER_GC_KEY_AGREEMENT_COMPLETED			= 0xfa, // _IMPROVED_PACKET_ENCRYPTION_
-	HEADER_GC_KEY_AGREEMENT						= 0xfb, // _IMPROVED_PACKET_ENCRYPTION_
+#ifdef _IMPROVED_PACKET_ENCRYPTION_
+	HEADER_GC_KEY_AGREEMENT_COMPLETED			= 0xfa,
+	HEADER_GC_KEY_AGREEMENT						= 0xfb,
+#endif
+
 	HEADER_GC_HANDSHAKE_OK						= 0xfc, // 252
 	HEADER_GC_PHASE								= 0xfd,	// 253
     HEADER_GC_BINDUDP                           = 0xfe, // 254
@@ -331,13 +292,13 @@ enum
 	PLAYER_PER_ACCOUNT3 = 3,
 	PLAYER_PER_ACCOUNT4 = 4,
 
-	PLAYER_ITEM_SLOT_MAX_NUM = 20,		// 플래이어의 슬롯당 들어가는 갯수.
+	PLAYER_ITEM_SLOT_MAX_NUM = 20,
 
 	QUICKSLOT_MAX_LINE = 4,
-	QUICKSLOT_MAX_COUNT_PER_LINE = 8, // 클라이언트 임의 결정값
+	QUICKSLOT_MAX_COUNT_PER_LINE = 8,
 	QUICKSLOT_MAX_COUNT = QUICKSLOT_MAX_LINE * QUICKSLOT_MAX_COUNT_PER_LINE,
 
-	QUICKSLOT_MAX_NUM = 36, // 서버와 맞춰져 있는 값
+	QUICKSLOT_MAX_NUM = 36,
 
 	SHOP_HOST_ITEM_MAX_NUM = 40,
 
@@ -406,7 +367,6 @@ typedef struct packet_mark_idxlist
     uint8_t    header;
 	uint32_t	bufSize;
     uint16_t    count;
-    //뒤에 size * (uint16_t + uint16_t)만큼 데이터 붙음
 } TPacketGCMarkIDXList;
 
 typedef struct packet_mark_block
@@ -415,7 +375,6 @@ typedef struct packet_mark_block
     uint32_t   bufSize;
 	uint8_t	imgIdx;
     uint32_t   count;
-    // 뒤에 64 x 48 x 픽셀크기(4바이트) = 12288만큼 데이터 붙음
 } TPacketGCMarkBlock;
 
 typedef struct command_symbol_upload
@@ -484,7 +443,6 @@ typedef struct command_login
     char pwd[PASS_MAX_NUM + 1];
 } TPacketCGLogin;
 
-// start - 권한 서버 접속을 위한 패킷들
 typedef struct command_login2
 {
 	uint8_t	header;
@@ -518,8 +476,8 @@ typedef struct command_player_select
 typedef struct command_attack
 {
 	uint8_t	header;
-	uint8_t	bType;			// 공격 유형
-	uint32_t	dwVictimVID;	// 적 VID
+	uint8_t	bType;
+	uint32_t	dwVictimVID;
 	uint8_t	bCRCMagicCubeProcPiece;
 	uint8_t	bCRCMagicCubeFilePiece;
 } TPacketCGAttack;

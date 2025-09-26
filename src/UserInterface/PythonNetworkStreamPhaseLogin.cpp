@@ -80,9 +80,8 @@ void CPythonNetworkStream::LoginPhase()
 
 void CPythonNetworkStream::SetLoginPhase()
 {
-	const char* key = LocaleService_GetSecurityKey();
 #ifndef _IMPROVED_PACKET_ENCRYPTION_
-	SetSecurityMode(true, key);
+	SetSecurityMode(true, LSS_SECURITY_KEY);
 #endif
 
 	if ("Login" != m_strPhase)

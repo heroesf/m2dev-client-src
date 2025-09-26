@@ -17,12 +17,6 @@ const char* LSS_GLOBAL		= "GLOBAL";
 
 static bool IS_CHEONMA = false;
 
-#ifndef LSS_SECURITY_KEY
-#define LSS_SECURITY_KEY	"testtesttesttest"
-#endif
-
-std::string __SECURITY_KEY_STRING__ = LSS_SECURITY_KEY;
-
 char	MULTI_LOCALE_SERVICE[256]	= "YMIR";
 char	MULTI_LOCALE_PATH[256]		= "locale/ymir";
 char	MULTI_LOCALE_NAME[256]		= "ymir";
@@ -162,11 +156,6 @@ int LocaleService_GetSkillPower(unsigned level)
 			125,	
 	};
 	return INTERNATIONAL_SKILL_POWERS[level];
-}
-
-const char*	LocaleService_GetSecurityKey()
-{
-	return __SECURITY_KEY_STRING__.c_str();
 }
 
 // CHEONMA

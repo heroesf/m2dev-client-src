@@ -332,8 +332,7 @@ bool CGuildMarkUploader::__LoginState_RecvPhase()
 	if (kPacketPhase.phase==PHASE_LOGIN)
 	{
 #ifndef _IMPROVED_PACKET_ENCRYPTION_
-		const char* key = LocaleService_GetSecurityKey();
-		SetSecurityMode(true, key);
+		SetSecurityMode(true, LSS_SECURITY_KEY);
 #endif
 
 		if (SEND_TYPE_MARK == m_dwSendType)

@@ -258,8 +258,7 @@ bool CGuildMarkDownloader::__LoginState_RecvPhase()
 	if (kPacketPhase.phase == PHASE_LOGIN)
 	{
 #ifndef _IMPROVED_PACKET_ENCRYPTION_
-		const char* key = LocaleService_GetSecurityKey();
-		SetSecurityMode(true, key);
+		SetSecurityMode(true, LSS_SECURITY_KEY);
 #endif
 
 		switch (m_dwTodo)

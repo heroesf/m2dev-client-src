@@ -212,8 +212,7 @@ bool CAccountConnector::__AuthState_RecvPhase()
 	else if (kPacketPhase.phase == PHASE_AUTH)
 	{
 #ifndef _IMPROVED_PACKET_ENCRYPTION_
-		const char* key = LocaleService_GetSecurityKey();
-		SetSecurityMode(true, key);
+		SetSecurityMode(true, LSS_SECURITY_KEY);
 #endif
 
 		TPacketCGLogin3 LoginPacket;
