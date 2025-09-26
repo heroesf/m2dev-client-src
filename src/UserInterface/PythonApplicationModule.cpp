@@ -236,9 +236,6 @@ PyObject* appGetLocaleServiceName(PyObject* poSelf, PyObject* poArgs)
 	return Py_BuildValue("s", LocaleService_GetName());
 }
 
-// 
-bool LoadLocaleData(const char* localePath);
-
 PyObject* appSetCHEONMA(PyObject* poSelf, PyObject* poArgs)
 {
 	int enable;
@@ -291,11 +288,7 @@ PyObject* appLoadLocaleAddr(PyObject* poSelf, PyObject* poArgs)
 
 PyObject* appLoadLocaleData(PyObject* poSelf, PyObject* poArgs)
 {
-	char* localePath;
-	if (!PyTuple_GetString(poArgs, 0, &localePath))
-		return Py_BuildException();
-
-	return Py_BuildValue("i", LoadLocaleData(localePath));
+	return Py_BuildValue("i", CPythonApplication::Instance().LoadLocaleData());
 }
 
 PyObject* appGetLocaleName(PyObject* poSelf, PyObject* poArgs)

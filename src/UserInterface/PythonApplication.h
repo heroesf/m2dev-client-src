@@ -146,6 +146,7 @@ class CPythonApplication : public CMSApplication, public CInputKeyboard, public 
 		}
 
 		void Loop();
+		bool LoadLocaleData();
 		void Destroy();
 		void Clear();
 		void Exit();

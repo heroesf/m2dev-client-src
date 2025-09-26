@@ -840,29 +840,31 @@ void CPythonApplication::Loop()
 	}
 }
 
-// SUPPORT_NEW_KOREA_SERVER
-bool LoadLocaleData(const char* localePath)
+bool CPythonApplication::LoadLocaleData()
 {
-	NANOBEGIN
-		CPythonNonPlayer&	rkNPCMgr	= CPythonNonPlayer::Instance();
+	CPythonNonPlayer&	rkNPCMgr	= CPythonNonPlayer::Instance();
 	CItemManager&		rkItemMgr	= CItemManager::Instance();	
 	CPythonSkill&		rkSkillMgr	= CPythonSkill::Instance();
 	CPythonNetworkStream& rkNetStream = CPythonNetworkStream::Instance();
 
-	char szItemList[256];
+	char szItemList[256] ="locale/item_list.txt";
+
 	char szItemProto[256];
+	snprintf(szItemProto, sizeof(szItemProto), "locale/language/%s/proto/item_proto", LocaleService_GetLocaleName());
+
 	char szItemDesc[256];	
+	snprintf(szItemDesc, sizeof(szItemDesc), "locale/language/%s/itemdesc.txt", LocaleService_GetLocaleName());
+
 	char szMobProto[256];
+	snprintf(szMobProto, sizeof(szMobProto), "locale/language/%s/proto/mob_proto", LocaleService_GetLocaleName());
+
 	char szSkillDescFileName[256];
-	char szSkillTableFileName[256];
+	snprintf(szSkillDescFileName, sizeof(szSkillDescFileName), "locale/language/%s/SkillDesc.txt", LocaleService_GetLocaleName());
+
+	char szSkillTableFileName[256] = "locale/SkillTable.txt";
+
 	char szInsultList[256];
-	snprintf(szItemList,	sizeof(szItemList) ,	"%s/item_list.txt",	localePath);		
-	snprintf(szItemProto,	sizeof(szItemProto),	"%s/item_proto",	localePath);
-	snprintf(szItemDesc,	sizeof(szItemDesc),	"%s/itemdesc.txt",	localePath);	
-	snprintf(szMobProto,	sizeof(szMobProto),	"%s/mob_proto",		localePath);	
-	snprintf(szSkillDescFileName, sizeof(szSkillDescFileName),	"%s/SkillDesc.txt", localePath);
-	snprintf(szSkillTableFileName, sizeof(szSkillTableFileName),	"%s/SkillTable.txt", localePath);	
-	snprintf(szInsultList,	sizeof(szInsultList),	"%s/insult.txt", localePath);
+	snprintf(szInsultList,	sizeof(szInsultList),	"locale/language/%s/insult.txt", LocaleService_GetLocaleName());
 
 	rkNPCMgr.Destroy();
 	rkItemMgr.Destroy();	
@@ -912,7 +914,7 @@ bool LoadLocaleData(const char* localePath)
 		char szEmpireTextConvFile[256];
 		for (DWORD dwEmpireID=1; dwEmpireID<=3; ++dwEmpireID)
 		{			
-			sprintf(szEmpireTextConvFile, "%s/lang%d.cvt", localePath, dwEmpireID);
+			sprintf(szEmpireTextConvFile, "locale/empire/lang%d.cvt", dwEmpireID);
 			if (!rkNetStream.LoadConvertTable(dwEmpireID, szEmpireTextConvFile))
 			{
 				TraceError("LoadLocaleData - CPythonNetworkStream::LoadConvertTable(%d, %s) FAILURE", dwEmpireID, szEmpireTextConvFile);			
@@ -920,10 +922,8 @@ bool LoadLocaleData(const char* localePath)
 		}
 	}
 
-	NANOEND
-		return true;
+	return true;
 }
-// END_OF_SUPPORT_NEW_KOREA_SERVER
 
 unsigned __GetWindowMode(bool windowed)
 {
