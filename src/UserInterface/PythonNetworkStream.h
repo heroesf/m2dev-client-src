@@ -300,10 +300,7 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		// Login Phase
 		bool SendLoginPacket(const char * c_szName, const char * c_szPassword);
 		bool SendLoginPacketNew(const char * c_szName, const char * c_szPassword);
-		bool SendChinaMatrixCardPacket(const char * c_szMatrixCardString);
-		bool SendRunupMatrixAnswerPacket(const char * c_szMatrixCardString);
 		bool SendDirectEnterPacket(const char * c_szName, const char * c_szPassword, UINT uChrSlot);
-
 		bool SendEnterGame();
 
 		// Select Phase
@@ -314,7 +311,6 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool SendDestroyCharacterPacket(BYTE index, const char * szPrivateCode);
 
 		// Main Game Phase
-		bool SendC2CPacket(DWORD dwSize, void * pData);
 		bool SendChatPacket(const char * c_szChat, BYTE byType = CHAT_TYPE_TALKING);
 		bool SendWhisperPacket(const char * name, const char * c_szChat);
 		bool SendMobileMessagePacket(const char * name, const char * c_szChat);
@@ -323,7 +319,7 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool SendMessengerRemovePacket(const char * c_szKey, const char * c_szName);
 
 	protected:
-		bool OnProcess();	// State들을 실제로 실행한다.
+		bool OnProcess();
 		void OffLinePhase();
 		void HandShakePhase();
 		void LoginPhase();
@@ -403,8 +399,6 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool __RecvLoginSuccessPacket4();
 		bool __RecvLoginFailurePacket();
 		bool __RecvEmpirePacket();
-		bool __RecvChinaMatrixCardPacket();
-		bool __RecvRunupMatrixQuizPacket();
 		bool __RecvLoginKeyPacket();
 
 		// Select Phase
@@ -412,7 +406,6 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool __RecvPlayerCreateFailurePacket();
 		bool __RecvPlayerDestroySuccessPacket();
 		bool __RecvPlayerDestroyFailurePacket();
-		bool __RecvPreserveItemPacket();
 		bool __RecvPlayerPoints();
 		bool __RecvChangeName();
 
@@ -430,7 +423,6 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool RecvWarpPacket();
 		bool RecvPVPPacket();
 		bool RecvDuelStartPacket();
-        bool RecvGlobalTimePacket();
 		bool RecvCharacterAppendPacket();
 		bool RecvCharacterAdditionalInfo();
 		bool RecvCharacterAppendPacketNew();
@@ -535,10 +527,8 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		// Use Potion
 		bool RecvSpecialEffect();
 
-		// 서버에서 지정한 이팩트 발동 패킷.
 		bool RecvSpecificEffect();
 		
-		// 용혼석 관련
 		bool RecvDragonSoulRefine();
 
 		// MiniMap Info
@@ -557,10 +547,8 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		bool RecvChannelPacket();
 
 	protected:
-		// 이모티콘
 		bool ParseEmoticon(const char * pChatMsg, DWORD * pdwEmoticon);
 
-		// 파이썬으로 보내는 콜들
 		void OnConnectFailure();
 		void OnScriptEventStart(int iSkin, int iIndex);
 		
@@ -597,9 +585,6 @@ class CPythonNetworkStream : public CNetworkStream, public CSingleton<CPythonNet
 		void __ClearNetworkActorManager();
 
 		void __ClearSelectCharacterData();
-
-		// DELETEME
-		//void __SendWarpPacket();
 
 		void __ConvertEmpireText(DWORD dwEmpireID, char* szText);
 

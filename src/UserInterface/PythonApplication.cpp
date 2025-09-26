@@ -951,7 +951,6 @@ bool CPythonApplication::Create(PyObject * poSelf, const char * c_szName, int wi
 
 	if (!CMSWindow::Create(c_szName, 4, 0, WindowMode, ::LoadIcon( GetInstance(), MAKEINTRESOURCE( IDI_METIN2 ) ), IDC_CURSOR_NORMAL))
 	{
-		//PyErr_SetString(PyExc_RuntimeError, "CMSWindow::Create failed");
 		TraceError("CMSWindow::Create failed");
 		SET_EXCEPTION(CREATE_WINDOW);
 		return false;
@@ -966,9 +965,6 @@ bool CPythonApplication::Create(PyObject * poSelf, const char * c_szName, int wi
 	m_pyNetworkStream.Discord_Start();
 #endif
 
-	// Ç®½ºÅ©¸° ¸ðµåÀÌ°í
-	// µðÆúÆ® IME ¸¦ »ç¿ëÇÏ°Å³ª À¯·´ ¹öÀüÀÌ¸é
-	// À©µµ¿ì Ç®½ºÅ©¸° ¸ðµå¸¦ »ç¿ëÇÑ´Ù
 	if (!m_pySystem.IsWindowed() && (m_pySystem.IsUseDefaultIME() || LocaleService_IsEUROPE()))
 	{
 		m_isWindowed = false;
@@ -1012,7 +1008,6 @@ bool CPythonApplication::Create(PyObject * poSelf, const char * c_szName, int wi
 		// Cursor
 		if (!CreateCursors())
 		{
-			//PyErr_SetString(PyExc_RuntimeError, "CMSWindow::Cursors Create Error");
 			TraceError("CMSWindow::Cursors Create Error");
 			SET_EXCEPTION("CREATE_CURSOR");
 			return false;
@@ -1076,7 +1071,6 @@ bool CPythonApplication::Create(PyObject * poSelf, const char * c_szName, int wi
 		// Network
 		if (!m_netDevice.Create())
 		{
-			//PyErr_SetString(PyExc_RuntimeError, "NetDevice::Create failed");
 			TraceError("NetDevice::Create failed");
 			SET_EXCEPTION("CREATE_NETWORK");
 			return false;
@@ -1153,8 +1147,6 @@ time_t CPythonApplication::GetServerTime()
 	return (ELTimer_GetMSec() - m_dwStartLocalTime) + m_tServerTime;
 }
 
-// 2005.03.28 - MALL ¾ÆÀÌÅÛ¿¡ µé¾îÀÖ´Â ½Ã°£ÀÇ ´ÜÀ§°¡ ¼­¹ö¿¡¼­ time(0) À¸·Î ¸¸µé¾îÁö´Â
-//              °ªÀÌ±â ¶§¹®¿¡ ´ÜÀ§¸¦ ¸ÂÃß±â À§ÇØ ½Ã°£ °ü·Ã Ã³¸®¸¦ º°µµ·Î Ãß°¡
 time_t CPythonApplication::GetServerTimeStamp()
 {
 	return (time(0) - m_tLocalStartTime) + m_tServerTime;
